@@ -1,27 +1,54 @@
 @extends('layouts.app')
 
-@section('title') View @endsection
+@section('title') Show @endsection
 
 @section('content')
-<div class="card bg-light mt-5" >
-  <div class="card-header bg-success text-center h3">Post Info</div>
-
+<div class="card my-4">
+    <div class="card-header fw-bold fs-1">
+        Post info
+    </div>
+    <div class="card-body ">
+        <h5 class="card-title fs-4">
+            <span class="fw-bold">Title:</span>
+            <p class="d-inline-block card-text text-muted">
+                {{$posts['title']}}
+            </p>
+        </h5>
+        <div class="fs-4">
+            <span class="fw-bold ">Description:</span>
+            <p class="card-text d-inline-block text-muted ">
+                {{$posts['description']}}
+            </p>
+        </div>
+    </div>
 </div>
-<div class="card bg-light mt-5" style="max-width: 18rem,text-align:center;">
-  <div class="card-body">
-      <div class="p-2">
-       <h5 class="card-title" style="font-size:18px;display:inline;">Title:</h5>
-       <p class="card-text" style="display:inline;">{{$post[1]}}</p>
-      </div>
-      <div class="p-2">
-      <h5 class="card-title" style="font-size:18px;display:inline;">posted By:</h5>
-      <p class="card-text" style="display:inline;">{{$post[2]}}</p>
-      </div>
-      <div class="p-2">
-      <h5 class="card-title" style="font-size:18px;display:inline;">Created At:</h5>
-    <p class="card-text" style="display:inline;">{{$post[3]}}</p>
-  </div>
-</div>  
+<!-- post creator info -->
+<div class="card my-4">
+    <div class="card-header fw-bold fs-1">
+        Post Creator info
+    </div>
+    <div class="card-body ">
+        <h5 class="card-title fs-4">
+            <span class="fw-bold">Name:</span>
+            <p class="d-inline-block card-text text-muted">
+                {{$posts->user ? $posts->user->name : 'Not Found'}}
+            </p>
+        </h5>
+        <h5 class="card-title fs-4">
+            <span class="fw-bold">Email:</span>
+            <p class="d-inline-block card-text text-muted">
+                {{$posts->user ? $posts->user->email : 'Not Found'}}
+            </p>
+        </h5>
+        <h5 class="card-title fs-4">
+            <span class="fw-bold">Created At:</span>
+            <p class="d-inline-block card-text text-muted">
+                {{$posts['created_at']->toDayDateTimeString()}}
+            </p>
+        </h5>
 
-      @endsection     
+    </div>
+</div>
+
+@endsection    
 
