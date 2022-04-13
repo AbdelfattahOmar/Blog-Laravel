@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -13,7 +15,7 @@ class CommentController extends Controller
         $post = Post::findOrFail($postId);
         $req = request();
         $post->Comments()->create([
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
             'body' => $req->comment,
             'commentable_id' => $postId,
             'commentable_type' => Post::class,
@@ -33,6 +35,7 @@ class CommentController extends Controller
     }
     public function edit($postId, $commentId)
     {
+        // $post = Post::find($postId);
         $req = request();
         Comment::where('id', $commentId)->first()->update([
             'body' => $req->comment

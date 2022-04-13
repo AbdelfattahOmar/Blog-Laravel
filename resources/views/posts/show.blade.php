@@ -49,7 +49,7 @@
     </div>
 </div>
 <!-- comments -->
-<h1 class="text-center bg-dark text-light rounded p-4">Comments</h1>
+<h1 class="text-center bg-success text-light rounded p-4">Comments</h1>
 <div>
     <form method="POST" action="{{route('comments.create' , ['postId' => $posts['id']])}}">
         @csrf
@@ -77,11 +77,10 @@
         </div>
     </div>
     @endforeach
-    
+
 </div>
 <div class="my-3">
     <a href="{{route('posts.index')}}" class="btn btn-primary btn-lg">Back</a>
 </div>
 
 @endsection
-

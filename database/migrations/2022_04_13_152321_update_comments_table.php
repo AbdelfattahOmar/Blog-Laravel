@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('commentable_id');
-            $table->string('commentable_type');
+            $table->integer('commentable_id')->nullable();
+            $table->string('commentable_type')->nullable();
         });
     }
 
