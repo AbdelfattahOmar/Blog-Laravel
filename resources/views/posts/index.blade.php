@@ -39,7 +39,7 @@
             </tbody>
           </table>
            <!-- Pagination  -->
-            <div class="flex justify-center items-center mt-10">
+            <div class="text-center">
               {!! $allPosts->links() !!}
           </div>
 @endsection
