@@ -26,6 +26,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => ['required', 'unique:posts', 'min:3'],
             'description' => ['required', 'min:10'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:50000'],
         ];
     }
 
@@ -42,6 +43,11 @@ class StorePostRequest extends FormRequest
             'title.unique' => 'title must be unique',
             'description.required' => 'Description is required',
             'description.min' => 'Description must be at least 10 characters',
+            'image.image' => 'you must upload an image',
+            'image.mimes' => 'Please upload an image with one of those extensions:jpeg,png,jpg,gif,svg',
+            'image.required' => 'Image is required',
+            'image.max' => 'Image size must not exceed 50000 mb'
+
         ];
     }
 }
