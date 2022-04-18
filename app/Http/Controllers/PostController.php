@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Http\Requests\StorePostRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -89,4 +90,6 @@ class PostController extends Controller
         unlink($imageURL);
         return to_route('posts.index');
     }
+
+    
 }
